@@ -14,10 +14,7 @@ from aiohttp import web
 from jinja2 import Environment, FileSystemLoader
 from www.orm import create_pool
 from www.coreweb import add_routes, add_static
-
 from conf.config import configs
-
-
 from www.controller import cookie2user, COOKIE_NAME
 
 def init_jinja2(app, **kw):
