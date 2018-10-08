@@ -2,6 +2,7 @@ eclipse.preferences.version=1
 encoding//conf/config.py=utf8
 encoding//conf/config_default.py=utf8
 encoding//conf/config_override.py=utf8
+encoding//www/__init__.py=utf8
 encoding//www/apis.py=utf8
 encoding//www/controller.py=utf8
 encoding//www/coreweb.py=utf8
