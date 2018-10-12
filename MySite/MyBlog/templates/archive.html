@@ -1,0 +1,9 @@
+{% extends "base.html" %}  
+{% block content %}  
+{% for post in posts %}  
+<h1>{{ post.title}}</h1>  
+<p>{{ post.body }}</p>
+<p>{{ post.timeStamp|date:"1, F jS"}}</p>
+<p>{{ post.author }}</p>
+{% endfor %}  
+{% endblock %}
