@@ -47,7 +47,7 @@ def api_blogs(request, page='1'):
             raise APIValueError('summary', 'summary cannot be empty.')
         if not content or not content.strip():
             raise APIValueError('content', 'content cannot be empty.')
-        user = request.user
+        user = getCookiesUser(request)
         user = User.objects.get(email = user.email)
         blog = Blog(user_id=user.id, user_name=user.name, user_image=user.image, name=name.strip(), summary=summary.strip(), content=content.strip())
         blog.save()
