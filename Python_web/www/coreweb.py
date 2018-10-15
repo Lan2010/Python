@@ -5,11 +5,17 @@ Created on 2018年9月27日
 
 @author: dev-lan
 '''
-from Tools.scripts.serve import app
+import sys
+import os
+curPath = os.path.abspath(os.path.dirname(__file__))
+print('--------------',curPath)
+rootPath = os.path.split(curPath)[0]   
+print('--------------',rootPath)
+sys.path.append(curPath)
+
 import asyncio, os, inspect , logging , functools
 from urllib import parse
 from www.apis import APIError
-
 
 from aiohttp import  web
 

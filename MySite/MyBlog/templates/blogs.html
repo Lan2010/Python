@@ -1,0 +1,73 @@
+{% extends '__base__.html' %}
+{% block title %}文章{% endblock %} 
+{% block beforehead %}
+<script>
+</script>
+
+{% endblock %}
+
+ {% block content %}
+
+<div class="uk-width-medium-3-4">
+	{% for blog in data %}
+	<article class="uk-article">
+		<h2>
+			<a href="/blog/{{ blog.id }}">{{ blog.name }}</a>
+		</h2>
+		<p class="uk-article-meta">发表于{{ blog.created_at }}</p>
+		<p>{{ blog.summary }}</p>
+		<p>
+			<a href="/blog/{{ blog.id }}">继续阅读 <i class="uk-icon-angle-double-right"></i></a>
+		</p>
+	</article>
+	<hr class="uk-article-divider">
+	{% endfor %}
+</div>
+   
+<div class="uk-width-medium-1-4">
+	<div class="uk-panel uk-panel-header">
+		<h3 class="uk-panel-title">友情链接</h3>
+		<ul class="uk-list uk-list-line">
+			<li><i class="uk-icon-thumbs-o-up"></i> <a target="_blank"
+				href="http://www.liaoxuefeng.com/category/0013738748415562fee26e070fa4664ad926c8e30146c67000">编程</a></li>
+			<li><i class="uk-icon-thumbs-o-up"></i> <a target="_blank"
+				href="http://www.liaoxuefeng.com/category/0013738748248885ddf38d8cd1b4803aa74bcda32f853fd000">读书</a></li>
+			<li><i class="uk-icon-thumbs-o-up"></i> <a target="_blank"
+				href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000">Python教程</a></li>
+			<li><i class="uk-icon-thumbs-o-up"></i> <a target="_blank"
+				href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">Git教程</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="col-xs-12">
+     <div class="col-xs-6">
+      <ul class="pagination" type ="color:#ff0080;">共{{ page_nums }}页 {{ count }}条记录</ul>
+         </div>
+      <div class="col-xs-6 align-right ">
+                 <ul class="pagination " style="display: block;position: relative;float: left;display: block;">
+                                    <!--如果数据还有前页,则上一页按钮有效-->
+                     {% if data.has_previous %}
+                   <li ><a href="?page={{ data.previous_page_number }}{{ query }}">上一页</a></li>
+                                    {% else %}
+                                    <li class="active" style="float: left;display: block;width:50px; height:30px;"><a>上一页</a></li>
+                                    {% endif %}
+                                    <!--分页展示，当前在哪页，当前页的按钮无法使用-->
+                                    {% for p in page_range %}
+                                      {% ifequal p data.number %}
+                                      <li class="active" style="float: left;display: block;;width:20px"><a>{{p}}</a></li>
+                                      {% else %}
+                                      <li  ><a href="?page={{p}}{{ query }}" title="第{{p}}页">{{p}}</a>
+									<li> {% endifequal %}
+                                    {% endfor %}
+                                       <!--如果数据还有后页,则下一页按钮有效-->
+                                    {% if data.has_next %}                                    
+				<li ><a href="?page={{ data.next_page_number }}{{ query }}">下一页</a></li>
+                                    {% else %}
+                                    <li class="active"style="float: left;display: block;width:50px; height:30px;"> <a>下一页</a></li>
+                                    {% endif %}
+                </ul>
+      </div>
+</div>
+
+{% endblock %}
