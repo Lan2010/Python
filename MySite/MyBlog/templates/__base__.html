@@ -15,16 +15,37 @@
     <script src="/static/js/vue.min.js"></script>
     <script src="/static/js/awesome.js"></script>
     {% block beforehead %}<!-- before head  -->{% endblock %}
+     <style> 
+        .white_content { 
+            display: none; 
+            position: absolute; 
+            top: 5%; 
+            left: 15%; 
+            width: 30%; 
+            height: 10%; 
+            padding: 10px; 
+            border: 5px solid orange; 
+            background-color: white; 
+            z-index:1002; 
+            overflow: auto; 
+        } 
+    </style> 
 </head>
+
 <body>
     <nav class="uk-navbar uk-navbar-attached uk-margin-bottom">
         <div class="uk-container uk-container-center">
             <a href="/" class="uk-navbar-brand">小玉米的个人微博 </a>
             <ul class="uk-navbar-nav">
                 <li data-url="blogs"><a href="/"><i class="uk-icon-home"></i> 博客</a></li>
-                <li><a target="_blank" href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000"><i class="uk-icon-book"></i> 教程</a></li>
+                <li><a target="_blank"  onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" ><i class="uk-icon-book"></i> About Me</a></li>
                 <li><a target="_blank" href="https://github.com/michaelliao/awesome-python3-webapp"><i class="uk-icon-code"></i> 源码</a></li>
             </ul>
+             <div id="light" class="white_content" style="color:#777;size:20px;">&nbsp;&nbsp;&nbsp;玉树临风 <br>
+          										&nbsp;&nbsp;&nbsp; 小玉米老爸一枚<br>
+          										&nbsp;&nbsp; 非诚勿扰<br>
+				<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none'">点这里关闭本窗口</a>
+			</div>          
             <div class="uk-navbar-flip">
                 <ul class="uk-navbar-nav">
  				{% if user %}
