@@ -6,7 +6,6 @@ from MyBlog.models import *
 from MyBlog.tools import pagination
 from MyBlog.Error import  APIValueError, APIError, APIPermissionError, APIResourceNotFoundError
 from django.views.decorators.csrf import csrf_exempt
-from aiohttp import web
 from MyBlog.mymiddleware import COOKIE_NAME,_COOKIE_KEY
 
 _RE_EMAIL = re.compile(r'^[a-z0-9\.\-\_]+\@[a-z0-9\-\_]+(\.[a-z0-9\-\_]+){1,4}$')

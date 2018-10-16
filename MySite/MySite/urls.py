@@ -19,6 +19,8 @@ from django.urls import path
 from MyBlog.views import *
 from MyBlog import views_manage
 import MySite
+from django.conf.urls.static import static
+from django.conf import settings
 
 extra_patterns = [
     url(r'blogs',views_manage.manage_blogs),
@@ -37,5 +39,4 @@ urlpatterns =[
     url(r'^register/$', register),
     url(r'^api/users$', api_user),
     url(r'^api/blogs/',include('MySite.blog_urls'))
-
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
