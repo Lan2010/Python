@@ -143,7 +143,7 @@ def api_user(request):
     uid = next_id()
     shal_passwd = '%s:%s' % (uid, passwd)
     print('type:',type(time.time()))
-    user = User(id=uid, name=name.strip(), email=email, passwd=hashlib.sha1(shal_passwd.encode(encoding='utf_8')).hexdigest(),admin=1, image='http://www.gravatar.com/avatar/%s?d=mm&s=120' % hashlib.md5(email.encode('utf-8')).hexdigest())
+    user = User(id=uid, name=name.strip(), email=email, passwd=hashlib.sha1(shal_passwd.encode(encoding='utf_8')).hexdigest(),admin=1, image='http://www.gravatar.com/avatar/%s?d=wavatar&s=120' % hashlib.md5(email.encode('utf-8')).hexdigest())
     user.save()
     # make session cookie:
     r = HttpResponse(json.dumps(user, cls=UserEncoder, ensure_ascii=False).encode('utf-8'))
