@@ -83,12 +83,11 @@ def getall(param):
 def api_create_comment(request, param):
     json_result = json.loads(request.body)
     content = json_result.get('content')
-    user = request.user
-    if user is None:
-        raise APIPermissionError('Please signin first.')
     if not content or not content.strip():
         raise APIValueError('content')
-    user = User.objects.get(email = user.email)
+    user = getCookiesUser(request)
+    if user is None:
+        raise APIPermissionError('Please signin first.')
     blog = Blog.objects.get(id = param)
     if blog is None:
         raise APIResourceNotFoundError('Blog')
